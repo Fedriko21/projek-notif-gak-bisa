@@ -3,7 +3,8 @@ import '../models/product.dart';
 import '../services/api_service.dart';
 import '../services/weather_service.dart';
 import 'product_detail.dart';
-import 'welcome_page.dart'; // ← WAJIB
+import 'welcome_page.dart'; 
+import 'cart_page.dart'; 
 
 class HomePage extends StatefulWidget {
   @override
@@ -45,8 +46,6 @@ class _HomePageState extends State<HomePage> {
         title: Text('Coffee Shop',
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.brown[800],
-
-        // 🔥 TOMBOL KELUAR
         actions: [
           IconButton(
             icon: Icon(Icons.logout, color: Colors.white),
@@ -119,6 +118,18 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
+      ),
+      // Floating Action Button (Tombol Melayang)
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Navigasi ke halaman keranjang
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => CartPage()),
+          );
+        },
+        backgroundColor: Colors.brown[800],
+        child: Icon(Icons.shopping_cart),
       ),
     );
   }
